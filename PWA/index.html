@@ -2,9 +2,16 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="./public/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="video chatt app">
+  <meta charset="UTF-8" />
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/masked-icon.png" color="#FFFFFF">
+  <meta name="theme-color" content="#ffffff">
   <title>WebRTC Demo</title>
 </head>
 
@@ -23,18 +30,28 @@
 
   </div>
 
+  <label for="webcamButton">
+    <h2>start webcam</h2>
+  </label>
   <button id="webcamButton">Start webcam</button>
-  <h2>2. Create a new Call</h2>
+
+  <label for="callButton">
+    <h2>2. Create a new Call</h2>
+  </label>
   <button id="callButton" disabled>Create Call (offer)</button>
 
-  <h2>3. Join a Call</h2>
-  <p>Answer the call from a different browser window or device</p>
 
+  <label for="callInput">
+    <h2>3. Join a Call</h2>
+    <p>Answer the call from a different browser window or device</p>
+  </label>
   <input id="callInput" />
+
   <button id="answerButton" disabled>Answer</button>
 
-  <h2>4. Hangup</h2>
-
+  <label for="hangupButton">
+    <h2>4. Hangup</h2>
+  </label>
   <button id="hangupButton" disabled>Hangup</button>
 
   <script type="module" src="/main.js"></script>

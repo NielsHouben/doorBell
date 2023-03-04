@@ -9,9 +9,17 @@ import * as firebaseConfig from './firebaseConfig.json';
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
+
+// get room id
+const params = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
+});
+// Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
+let roomId = params.id; // "some_value"
+console.log(roomId);
+
 
 const servers = {
   iceServers: [
@@ -68,7 +76,8 @@ webcamButton.onclick = async () => {
 callButton.onclick = async () => {
   // Reference Firestore collections for signaling
   // const callDoc = db.collection('calls').doc();
-  const callDoc = doc(collection(db, "calls"));
+  // const callDoc = doc(collection(db, "calls"));
+  const callDoc = doc(collection(db, "calls"), roomId);
 
 
   // const offerCandidates = callDoc.collection('offerCandidates');
