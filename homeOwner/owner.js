@@ -12,15 +12,6 @@ const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
 
-// get room id
-const params = new Proxy(new URLSearchParams(window.location.search), {
-  get: (searchParams, prop) => searchParams.get(prop),
-});
-// Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
-let roomId = params.id; // "some_value"
-console.log(roomId);
-
-
 const servers = {
   iceServers: [
     {
@@ -38,8 +29,6 @@ let remoteStream = null;
 // HTML elements
 const webcamButton = document.getElementById('webcamButton');
 const webcamVideo = document.getElementById('webcamVideo');
-const callButton = document.getElementById('callButton');
-const callInput = document.getElementById('callInput');
 const answerButton = document.getElementById('answerButton');
 const remoteVideo = document.getElementById('remoteVideo');
 const hangupButton = document.getElementById('hangupButton');
@@ -67,72 +56,16 @@ webcamButton.onclick = async () => {
 
   remoteVideo.srcObject = remoteStream;
 
-  callButton.disabled = false;
   answerButton.disabled = false;
   webcamButton.disabled = true;
+
 };
 
-// 2. Create an offer
-callButton.onclick = async () => {
-  // Reference Firestore collections for signaling
-  // const callDoc = db.collection('calls').doc();
-  // const callDoc = doc(collection(db, "calls"));
-  const callDoc = doc(collection(db, "calls"), roomId);
-
-
-  // const offerCandidates = callDoc.collection('offerCandidates');
-  // const answerCandidates = callDoc.collection('answerCandidates');
-  const offerCandidates = collection(callDoc, 'offerCandidates');
-  const answerCandidates = collection(callDoc, 'answerCandidates');
-
-  callInput.value = callDoc.id;
-  console.log(callInput.value);
-
-  // Get candidates for caller, save to db
-  pc.onicecandidate = (event) => {
-    // event.candidate && offerCandidates.add(event.candidate.toJSON());
-    event.candidate && addDoc(offerCandidates, event.candidate.toJSON());
-  };
-
-  // Create offer
-  const offerDescription = await pc.createOffer();
-  await pc.setLocalDescription(offerDescription);
-
-  const offer = {
-    sdp: offerDescription.sdp,
-    type: offerDescription.type,
-  };
-
-  // await callDoc.set({ offer });
-  await setDoc(callDoc, { offer });
-
-  // Listen for remote answer
-  // callDoc.onSnapshot((snapshot) => {
-  onSnapshot(callDoc, (snapshot) => {
-    const data = snapshot.data();
-    if (!pc.currentRemoteDescription && data?.answer) {
-      const answerDescription = new RTCSessionDescription(data.answer);
-      pc.setRemoteDescription(answerDescription);
-    }
-  });
-
-  // When answered, add candidate to peer connection
-  // answerCandidates.onSnapshot((snapshot) => {
-  onSnapshot(answerCandidates, (snapshot) => {
-    snapshot.docChanges().forEach((change) => {
-      if (change.type === 'added') {
-        const candidate = new RTCIceCandidate(change.doc.data());
-        pc.addIceCandidate(candidate);
-      }
-    });
-  });
-
-  hangupButton.disabled = false;
-};
 
 // 3. Answer the call with the unique ID
 answerButton.onclick = async () => {
-  const callId = callInput.value;
+  // const callId = callInput.value;
+  const callId = "room";
   // const callDoc = db.collection('calls').doc(callId);
   const callDoc = doc(db, 'calls', callId);
 
@@ -145,8 +78,6 @@ answerButton.onclick = async () => {
     // event.candidate && answerCandidates.add(event.candidate.toJSON());
     event.candidate && addDoc(answerCandidates, event.candidate.toJSON());
   };
-
-
 
   // const callData = (await callDoc.get()).data();
   const callData = (await getDoc(callDoc)).data();

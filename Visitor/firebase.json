@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "visitor-e8075",
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

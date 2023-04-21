@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+
+body {
+  font-family: 'Syne Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin: 80px 10px;
+}
+
+video {
+  all: unset;
+
+  width: 40vw;
+  height: 30vw;
+  margin: 2rem;
+  background: #2c3e50;
+}
+
+.videos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#remoteVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+#hangupButton {
+  display: none;
+}
+
+.button-green {
+
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-duration: .3s;
+  border: 1px solid transparent;
+  letter-spacing: 2px;
+  min-width: 160px;
+  text-transform: uppercase;
+  white-space: normal;
+  font-weight: 700;
+  text-align: center;
+  padding: 17px 48px;
+  color: #fff;
+  background-color: #1ED760;
+  height: 48px;
+
+
+}
+
+.btton-green :hover {
+  transform: scale(1.04);
+  background-color: #21e065;
+}
+
+
+#call {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  width: 80%;
+  text-align: center;
+
+
+}
+
+/* video::-webkit-media-controls-panel {
+  display: none !important;
+  opacity: 1 !important;
+}
+
+video::-webkit-media-controls {
+  display: none;
+} */

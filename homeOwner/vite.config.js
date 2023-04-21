@@ -1,10 +1,26 @@
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
+    build: {
+        rollupOptions: {
+            input: {
+                main: resolve(__dirname, 'index.html'),
+                // owner: resolve(__dirname, 'owner.html'),
+                // visitor: resolve(__dirname, 'visitor.html'),
+            },
+        },
+    },
     plugins: [
         VitePWA({
-            registerType: 'prompt',
+
+            // registerType: 'prompt',
+            registerType: 'autoUpdate',
+            devOptions: {
+                enabled: true
+            },
+
             includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
             manifest: {
                 name: 'doorBell',

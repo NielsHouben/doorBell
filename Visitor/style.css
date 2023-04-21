@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+
+body {
+  font-family: 'Syne Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  /* color: #2c3e50; */
+  margin: 80px 10px;
+  /* background-color: rgb(32, 32, 32); */
+  background-color: rgb(10, 10, 10);
+}
+
+
+
+#remoteVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+#hangupButton {
+  display: none;
+}
+
+#buttonHolders {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  width: 80%;
+}
+
+#buttonHolders>button {
+  margin: 10px;
+  width: 100%;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-duration: .3s;
+  border: 1px solid transparent;
+  letter-spacing: 2px;
+  min-width: 160px;
+  text-transform: uppercase;
+  white-space: normal;
+  font-weight: 700;
+  text-align: center;
+  padding: 17px 48px;
+  color: #fff;
+  height: 48px;
+}
+
+.button-green {
+  background-color: #1ED760;
+}
+
+.btton-green :hover {
+  transform: scale(1.04);
+  background-color: #21e065;
+}
+
+.button-blue {
+  background-color: #1E60D7;
+}
+
+.btton-green :hover {
+  transform: scale(1.04);
+  background-color: #1165e0;
+}
+
+
+#call {}
+
+/* 
+video::-webkit-media-controls,
+video::-moz-media-controls,
+video::-o-media-controls,
+video::-ms-media-controls {
+  display: none !important;
+  pointer-events: none;
+
+} */
+
+video {
+  /* width: 40vw;
+  height: 30vw; */
+  /* margin: 2rem; */
+  /* background: #2c3e50; */
+  /* pointer-events: none; */
+  /* display: none; */
+}
+
+#webcamVideo {
+  display: none;
+  position: absolute;
+
+  bottom: 5vh;
+  /* left: 40%; */
+  left: 5vh;
+  max-width: 30%;
+
+
+}
