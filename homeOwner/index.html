@@ -12,23 +12,42 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="mask-icon" href="/masked-icon.png" color="#FFFFFF">
     <meta name="theme-color" content="#ffffff">
-    <title>WebRTC Demo</title>
+    <title>WebRTC </title>
 </head>
 
 <body>
-    <div class="videos">
-        <h3>Local Stream</h3>
-        <video id="webcamVideo" autoplay playsinline></video>
-
+    <div id="eventsList">
+        <div id="options">
+            <button class="selected ">Knocks</button>
+            <button>Calls</button>
+        </div>
+        <div id="list">
+            <div>
+                <div>Date</div>
+                <div>Annonymus</div>
+            </div>
+            <div>
+                <div>Date</div>
+                <div>Annonymus</div>
+            </div>
+            <!-- <ul>
+                <li>a</li>
+                <li>b</li>
+                <li>c</li>
+            </ul> -->
+        </div>
 
     </div>
-    <video id="remoteVideo" autoplay playsinline></video>
+    <div id="callElements">
+        <video id="webcamVideo" autoplay playsinline></video>
+        <video id="remoteVideo" autoplay playsinline></video>
 
-    <button id="webcamButton">Start webcam</button>
+        <button id="webcamButton">Start webcam</button>
 
-    <button id="answerButton" disabled>Answer</button>
+        <button id="answerButton" disabled>Answer</button>
 
-    <button id="hangupButton" disabled>Hangup</button>
+        <button id="hangupButton" disabled>Hangup</button>
+    </div>
 
     <script type="module" src="/owner.js"></script>
 

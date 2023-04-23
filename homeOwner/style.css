@@ -5,8 +5,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: white;
   margin: 80px 10px;
+  background-color: rgb(10, 10, 10);
 }
 
 video {
@@ -16,12 +17,6 @@ video {
   height: 30vw;
   margin: 2rem;
   background: #2c3e50;
-}
-
-.videos {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 
@@ -89,3 +84,70 @@ video {
 video::-webkit-media-controls {
   display: none;
 } */
+
+#callElements {
+  display: none;
+  background-color: black;
+}
+
+#eventsList {
+  position: relative;
+  width: 80%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+  /* box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.4); */
+  border: white solid;
+  border-radius: 10px;
+
+  /* padding-bottom: 5px; */
+}
+
+#options {
+  /* width: 100%; */
+  display: flex;
+}
+
+#options>button:nth-child(1) {
+  border-top-left-radius: 6px;
+}
+
+#options>button:nth-child(2) {
+  border-top-right-radius: 6px;
+}
+
+
+#options>button {
+  width: 50%;
+  height: 30px;
+  border: none;
+  text-transform: uppercase;
+  white-space: normal;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 2px;
+  color: #fff;
+  border-bottom: white solid;
+}
+
+#options>button:not(.selected) {
+  background-color: rgb(110, 110, 110);
+
+  /* background-color: black; */
+}
+
+
+.selected {
+  background-color: #03ec35;
+}
+
+#list>div {
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#list>div>div {
+  width: 50%;
+
+}

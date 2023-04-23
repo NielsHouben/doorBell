@@ -1,7 +1,7 @@
 import './style.css';
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, collection, setDoc, addDoc, getDoc, updateDoc, onSnapshot } from "firebase/firestore";
+import { getFirestore, doc, collection, setDoc, addDoc, getDoc, updateDoc, onSnapshot, query, where } from "firebase/firestore";
 
 // Create this file...
 import * as firebaseConfig from './firebaseConfig.json';
@@ -107,3 +107,29 @@ answerButton.onclick = async () => {
     });
   });
 };
+
+
+const unsub = onSnapshot(collection(db, "knocks"), (documents) => {
+  // console.log("Current data: ", doc.data());
+  // console.log(doc);
+  let knocks = [];
+  documents.forEach(doc => {
+    // knocks.push(doc.data());
+    let date = doc._key.path.segments[6];
+
+    knocks.push(date);
+  });
+  console.log(knocks);
+});
+
+
+// const q = query(collection(db, "knocks"));
+// const unsubscribe = onSnapshot(q, (querySnapshot) => {
+//   const cities = [];
+//   querySnapshot.forEach((doc) => {
+//     cities.push(doc);
+//   });
+//   console.log(cities);
+//   // console.log(querySnapshot);
+//   // console.log("Current cities in CA: ", cities.join(", "));
+// });

@@ -26,6 +26,7 @@ let remoteStream = null;
 
 // HTML elements
 const callButton = document.getElementById('call');
+const knockButton = document.getElementById('knock');
 const webcamVideo = document.getElementById('webcamVideo');
 const remoteVideo = document.getElementById('remoteVideo');
 const hangupButton = document.getElementById('hangupButton');
@@ -121,3 +122,9 @@ callButton.onclick = async () => {
 
 // 2. Create an offer
 // callButton.onclick = createOffer();
+
+knockButton.onclick = async () => {
+  let unixTimeStamp = Math.floor(Date.now() / 1000);
+  console.log(unixTimeStamp);
+  await setDoc(doc(db, "knocks", String(unixTimeStamp)), { fromDoorBell: false });
+};
