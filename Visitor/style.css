@@ -27,6 +27,21 @@ body {
   display: none;
 }
 
+#buttonHolders>input {
+  margin-bottom: 20px;
+  width: 92%;
+  border: none;
+  color: white;
+  border: 1px solid white;
+  background-color: rgb(10, 10, 10);
+  height: 48px;
+  font-size: 14px;
+
+  font-weight: 700;
+  padding: none;
+  padding-left: 10px;
+}
+
 #buttonHolders {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -48,7 +63,8 @@ body {
   transition-duration: .3s;
   border: 1px solid transparent;
   letter-spacing: 2px;
-  min-width: 160px;
+  /* min-width: 160px; */
+  width: 100%;
   text-transform: uppercase;
   white-space: normal;
   font-weight: 700;

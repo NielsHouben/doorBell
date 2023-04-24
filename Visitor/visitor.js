@@ -30,6 +30,8 @@ const knockButton = document.getElementById('knock');
 const webcamVideo = document.getElementById('webcamVideo');
 const remoteVideo = document.getElementById('remoteVideo');
 const hangupButton = document.getElementById('hangupButton');
+const buttonHolders = document.getElementById('buttonHolders');
+const nameInput = document.getElementById('nameInput');
 
 let createOffer = async () => {
   // Reference Firestore collections for signaling
@@ -110,7 +112,10 @@ callButton.onclick = async () => {
 
 
   // webcamButton.disabled = true;
-  callButton.style.display = "none";
+  // callButton.style.display = "none";
+  // knockButton.style.display = "none";
+  buttonHolders.style.display = "none";
+
 
 
   webcamVideo.style.display = "block";
@@ -126,5 +131,11 @@ callButton.onclick = async () => {
 knockButton.onclick = async () => {
   let unixTimeStamp = Math.floor(Date.now() / 1000);
   console.log(unixTimeStamp);
-  await setDoc(doc(db, "knocks", String(unixTimeStamp)), { fromDoorBell: false });
+  console.log(nameInput.value);
+  if (nameInput.value == "Name") {
+    await setDoc(doc(db, "knocks", String(unixTimeStamp)), { name: "Anonymous" });
+  }
+  else {
+    await setDoc(doc(db, "knocks", String(unixTimeStamp)), { name: nameInput.value });
+  }
 };
